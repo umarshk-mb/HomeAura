@@ -1,0 +1,9 @@
+<div class="main-products">
+  @for(product of products; track product.id) {
+    <div class="container">
+        <img [src]= 'product.imageUrl' [alt]="product.id" class="product-image"/>
+        <p>{{product.categoryType}}</p>
+    </div>
+  }
+
+</div>

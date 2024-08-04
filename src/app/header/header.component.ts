@@ -7,10 +7,4 @@ import { Component } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent {
-  title: string;
-
-  constructor() {
-    this.title = 'HomeAura';
-  }
-}
+export class HeaderComponent { }
