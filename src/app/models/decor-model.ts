@@ -1,13 +1,7 @@
-export interface DecorData {
+export interface DecorCategories {
   id: number;
-  categoryType: string;
-  title: string;
-  imageUrl: string;
   description: string;
-  items: string[];
-  sortBy?: number;
-}
-
-export interface LightingData extends DecorData {
-
+  image_url: string;
+  name: string;
+  type: string;
 }

@@ -1,13 +1,52 @@
+// common-styles
 .main-products {
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-family: ExtraLight 200;
-  // font-weight: 00;
-  padding: 20px;
+  gap: 20px;
+  font-family: monospace;
+  margin: 20px 5px;
 }
 
 .product-image {
-  width: 40%;
-  height: 50%;
+  box-shadow: 4px 4px 4px gray;
+}
+
+p {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+  text-transform: uppercase;
+}
+
+// mobile and tablet
+@media (max-width: 960px) {
+  .main-products {
+    flex-direction: column;
+  }
+
+  .product-image {
+    width: 240px;
+    height: 280px;
+
+  }
+
+  p {
+    font-size: 20px;
+  }
+}
+
+// desktop
+@media (min-width: 961px) {
+  .main-products {
+    justify-content: space-around;
+  }
+
+  .product-image {
+    width: 140px;
+    height: 200px;
+  }
+
+  p {
+    font-size: 15px;
+  }
 }

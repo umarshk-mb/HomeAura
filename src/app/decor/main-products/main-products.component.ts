@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../category-loader.service';
-import { map, Observable } from 'rxjs';
-import { DecorData } from '../../models/decor-model';
+import { Observable } from 'rxjs';
+import { DecorCategories } from '../../models/decor-model';
+import { error } from 'console';
 
 @Component({
   selector: 'app-main-products',
@@ -11,13 +12,16 @@ import { DecorData } from '../../models/decor-model';
   styleUrl: './main-products.component.scss'
 })
 export class MainProductsComponent implements OnInit {
-  products?: DecorData[];
 
+  mainCategories?: DecorCategories[];
   constructor(private categoryService: CategoryService) { }
 
-  ngOnInit() {
-    this.categoryService.getCategories().then(data => {
-      this.products = data;
-    })
+  ngOnInit(): void {
+    this.categoryService.getCategories().subscribe((data) => {
+      this.mainCategories = data;
+    },
+      (error) => {
+        console.log('Get categoies', error);
+      })
   }
 }

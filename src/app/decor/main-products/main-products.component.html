@@ -1,9 +1,8 @@
 <div class="main-products">
-  @for(product of products; track product.id) {
-    <div class="container">
-        <img [src]= 'product.imageUrl' [alt]="product.id" class="product-image"/>
-        <p>{{product.categoryType}}</p>
-    </div>
+  @for(product of mainCategories; track product.id) {
+  <div class="product-container">
+    <img [src]='product.image_url' [alt]="product.id" class="product-image" />
+    <p>{{product.name}}</p>
+  </div>
   }
-
 </div>

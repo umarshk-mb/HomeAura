@@ -1,16 +1,15 @@
 import { Injectable } from "@angular/core";
-import { DecorData } from "./models/decor-model";
-import { categoryData } from "./category-api-mock";
+import { DecorCategories } from "./models/decor-model";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
 
 @Injectable({ providedIn: 'root' })
 export class CategoryService {
 
-  getCategories(): Promise<DecorData[]> {
-    return new Promise((resolve, reject) => {
-      resolve(categoryData());
-      reject(() => {
-        console.log('Fetching category data error')
-      });
-    });
-  };
+    private api: string = 'http://localhost:3000/categories';
+    constructor(private http: HttpClient) { }
+
+    getCategories(): Observable<DecorCategories[]> {
+        return this.http.get<DecorCategories[]>(this.api)
+    }
 }
