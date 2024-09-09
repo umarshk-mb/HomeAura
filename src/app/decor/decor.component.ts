@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { MainProductsComponent } from './main-products/main-products.component';
 import { RouterOutlet } from '@angular/router';
 
+enum DecorCategory {
+  TOP = 'Top Categories'
+}
+
 @Component({
   selector: 'app-decor',
   standalone: true,
@@ -11,5 +15,5 @@ import { RouterOutlet } from '@angular/router';
 })
 export class DecorComponent {
 
-  focus = 'Top Category'
+  first_focus = DecorCategory.TOP;
 }

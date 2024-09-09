@@ -1,3 +1,4 @@
+@if (mainCategories) {
 <div class="main-products">
   @for(product of mainCategories; track product.id) {
   <div class="product-container">
@@ -6,3 +7,6 @@
   </div>
   }
 </div>
+} @else {
+<h3>{{ errorMessage }}</h3>
+}
