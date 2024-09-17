@@ -14,18 +14,12 @@ import { error } from 'console';
 })
 export class MainProductsComponent implements OnInit {
 
-  mainCategories: DecorCategories[] = [];
-  errorMessage: string | null = null;
+  mainCategories?: Observable<DecorCategories[]>;
+  // errorMessage: string | null = null; // comes from interceptor, need to add error component.
 
   constructor(private categoryService: CategoryService) { }
 
   ngOnInit(): void {
-    this.categoryService.getCategories().subscribe((categories) => {
-      if (typeof categories === 'string') {
-        this.errorMessage = categories;
-      } else {
-        this.mainCategories = categories;
-      }
-    });
+    this.mainCategories = this.categoryService.getCategories()
   };
 };
