@@ -1,8 +1,9 @@
 <div class="main-products">
-  @for(product of mainCategories; track product.id) {
+  @for(product of mainCategories | async; track product.id) {
   <div class="product-container">
     <img [src]='product.image_url' [alt]="product.id" class="product-image" />
     <p>{{product.name}}</p>
   </div>
   }
 </div>
+}

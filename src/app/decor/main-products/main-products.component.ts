@@ -13,15 +13,12 @@ import { error } from 'console';
 })
 export class MainProductsComponent implements OnInit {
 
-  mainCategories?: DecorCategories[];
+  mainCategories?: Observable<DecorCategories[]>;
+  // errorMessage: string | null = null; // comes from interceptor, need to add error component.
+
   constructor(private categoryService: CategoryService) { }
 
   ngOnInit(): void {
-    this.categoryService.getCategories().subscribe((data) => {
-      this.mainCategories = data;
-    },
-      (error) => {
-        console.log('Get categoies', error);
-      })
-  }
-}
+    this.mainCategories = this.categoryService.getCategories()
+  };
+};
