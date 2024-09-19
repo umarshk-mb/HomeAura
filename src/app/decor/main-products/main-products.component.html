@@ -1,7 +1,7 @@
 @if (mainCategories) {
 <div class="main-products">
   @for(product of mainCategories | async; track product.id) {
-  <div class="product-container">
+  <div class="product-container" (click)="productNavigate(product.type)">
     <img [src]='product.image_url' [alt]="product.id" class="product-image" />
     <p>{{product.name}}</p>
   </div>
