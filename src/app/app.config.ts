@@ -6,10 +6,15 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { httpErrorInterceptor } from './http-interceptors';
 import { provideStore } from '@ngrx/store';
-import { provideEffects } from '@ngrx/effects';
+import { cartReducer } from './state/cart.reducer';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes),
+  providers: [
+    provideRouter(routes),
     provideClientHydration(),
-    provideHttpClient(withFetch(), withInterceptors([httpErrorInterceptor])), provideStore(), provideEffects()]
+    provideHttpClient(withFetch(), withInterceptors([httpErrorInterceptor])),
+    provideStore({ Cart_Reducer: cartReducer }),
+    provideStoreDevtools(),
+  ],
 };
