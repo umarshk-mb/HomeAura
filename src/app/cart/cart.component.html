@@ -1,1 +1,13 @@
-<p>cart works!</p>
+<div class="cart-container">
+    @if(true) {
+        <div class="list-items">
+            <p>Item 1</p>
+            <p>Item 2</p>
+            <p>Item 3</p>
+        </div>
+    } @else {
+        <h3>Browse items</h3>
+    }
+
+    <ha-order-summary></ha-order-summary>
+</div>
