@@ -13,6 +13,7 @@ import * as CartActions from '../../../state/cart.actions';
 export class QuickViewComponent {
   isVisible = false;
   product: Products = {} as Products
+  isDisabled: boolean = false;
   imgPath = 'assets/close.jpg'
 
   constructor(private store: Store<{ item: IProductState }>) { }
@@ -20,6 +21,7 @@ export class QuickViewComponent {
   open(product: Products) {
     this.isVisible = true;
     this.product = product;
+    this.isDisabled = false;
   }
 
   close() {
@@ -29,6 +31,10 @@ export class QuickViewComponent {
   addItem(product: Products): void {
     this.store.dispatch(CartActions.addItem({
       item: product
-    }))
+    }));
+
+    this.isDisabled = true;
   }
+
+
 }
