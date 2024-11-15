@@ -14,7 +14,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(),
     provideHttpClient(withFetch(), withInterceptors([httpErrorInterceptor])),
-    provideStore({ Cart_Reducer: cartReducer }),
+    provideStore({ cart: cartReducer }),
     provideStoreDevtools(),
   ],
 };

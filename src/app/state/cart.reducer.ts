@@ -15,6 +15,11 @@ const _reducer = createReducer(
         product: [...state.product, item],
         isLoading: true
     })),
+
+    on(CartActions.removeItem, (state, { item }) => ({
+        ...state,
+        product: state.product.filter((x) => x._id !== item._id),
+    }))
 )
 
 export function cartReducer(state = initialState, actions: Action): IProductState {
