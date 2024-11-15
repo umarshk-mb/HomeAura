@@ -1,0 +1,24 @@
+.cart-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px;
+    gap: 20px;
+
+    .cart-items {
+        display: flex;
+        flex-grow: 1;
+        flex-direction: column;
+    }
+
+
+    ha-order-summary, .empty-cart {
+        flex-grow: 1;
+    }
+}
+
+@media (max-width: 460px) {
+    .cart-container {
+        flex-direction: column;
+        margin: 30px;
+    }
+}

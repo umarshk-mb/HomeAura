@@ -1,12 +1,35 @@
 <div class="cart-container">
-    @if(true) {
-        <div class="list-items">
-            <p>Item 1</p>
-            <p>Item 2</p>
-            <p>Item 3</p>
-        </div>
+    @if(hasItems) {
+    <div class="cart-items">
+        @for(item of items | async; track item.name) {
+        <li class="flex py-6 list-items">
+            <div class="size-24 shrink-0 overflow-hidden rounded-md border border-gray-200">
+                <img [src]="item.image" alt="item image not found" class="size-full object-cover">
+            </div>
+
+            <div class="ml-4 flex flex-1 flex-col">
+                <div>
+                    <div class="flex justify-between text-base font-medium text-gray-900">
+                        <h3>
+                            <p>{{item.name}}</p>
+                        </h3>
+                        <p class="ml-4">{{item.price}}</p>
+                    </div>
+                    <p class="mt-1 text-sm text-gray-500">{{item.type}}</p>
+                </div>
+                <div class="flex flex-1 items-end justify-between text-sm">
+                    <p class="text-gray-500">Qty 1</p> <!--Need to update-->
+                    <div class="flex">
+                        <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500"
+                            (click)="removeItem(item)">Remove</button>
+                    </div>
+                </div>
+            </div>
+        </li>
+        }
+    </div>
     } @else {
-        <h3>Browse items</h3>
+    <div class="empty-cart"> No items to show </div>
     }
 
     <ha-order-summary></ha-order-summary>

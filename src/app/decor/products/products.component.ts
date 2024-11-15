@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs';
 import { Products } from '../../models/products.model';
 import { ProductService } from './../../product-loader.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
