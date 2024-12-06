@@ -31,10 +31,17 @@
     padding: 5px;
     text-transform: uppercase;
     border-radius: 5px;
-    border: 1.5px solid #008000;
+    border: 1px solid #000;
     width: 100%;
     font-weight: 500;
-    color: #800080;
+    color: #000;
+    text-shadow: #AAFF00 1px 0 10px;
+  }
+
+  .item-added {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .close{
@@ -53,7 +60,14 @@
    .product-desc {
     text-transform: capitalize;
    }
-}
+
+   .product-price {
+    span{
+      margin-right: 2px;
+    }
+   }
+
+  }
 
 @media (min-width: 960px) {
     .quick-view-container {
@@ -67,6 +81,7 @@
     .product-image {
       grid-row: 1/4;
       grid-column: 1/3;
+      width: 75%;
     }
 
     .product-details {

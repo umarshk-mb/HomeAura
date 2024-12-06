@@ -1,27 +1,28 @@
+import { ElementRef, Renderer2 } from '@angular/core';
 import { Component } from '@angular/core';
 import { Products } from '../../../models/products.model';
 import { Store } from '@ngrx/store';
 import { IProductState } from '../../../state/cart.state';
 import * as CartActions from '../../../state/cart.actions';
+
 @Component({
   selector: 'app-quick-view',
   standalone: true,
-  imports: [],
   templateUrl: './quick-view.component.html',
-  styleUrl: './quick-view.component.scss'
+  styleUrl: './quick-view.component.scss',
 })
 export class QuickViewComponent {
   isVisible = false;
-  product: Products = {} as Products
-  isDisabled: boolean = false;
-  imgPath = 'assets/close.jpg'
+  product: Products = {} as Products;
+  imgPath = 'assets/close.jpg';
 
-  constructor(private store: Store<{ item: IProductState }>) { }
+  isItemAdded = false;
+
+  constructor(private el: ElementRef, private renderer: Renderer2, private store: Store<{ item: IProductState }>) { }
 
   open(product: Products) {
     this.isVisible = true;
     this.product = product;
-    this.isDisabled = false;
   }
 
   close() {
@@ -33,8 +34,7 @@ export class QuickViewComponent {
       item: product
     }));
 
-    this.isDisabled = true;
+    this.isItemAdded = !this.isItemAdded;
   }
-
 
 }

@@ -1,13 +1,12 @@
 import { Products } from '../../models/products.model';
 import { ProductService } from './../../product-loader.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AsyncPipe } from '@angular/common';
 import { QuickViewComponent } from './quick-view/quick-view.component';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [AsyncPipe, QuickViewComponent],
+  imports: [QuickViewComponent],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })

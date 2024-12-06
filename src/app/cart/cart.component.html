@@ -1,6 +1,7 @@
+@if(hasItems) {
 <div class="cart-container">
-    @if(hasItems) {
     <div class="cart-items">
+        <h2>Home Decor Picks</h2>
         @for(item of items | async; track item.name) {
         <li class="flex py-6 list-items">
             <div class="size-24 shrink-0 overflow-hidden rounded-md border border-gray-200">
@@ -13,7 +14,7 @@
                         <h3>
                             <p>{{item.name}}</p>
                         </h3>
-                        <p class="ml-4">{{item.price}}</p>
+                        <p class="ml-4"><span>&#x20B9;</span>{{item.price}}</p>
                     </div>
                     <p class="mt-1 text-sm text-gray-500">{{item.type}}</p>
                 </div>
@@ -28,9 +29,13 @@
         </li>
         }
     </div>
-    } @else {
-    <div class="empty-cart"> No items to show </div>
-    }
 
     <ha-order-summary></ha-order-summary>
 </div>
+} @else {
+<div class="empty-cart">
+    <img src="../../assets/empty-bag.jpg" alt="no items found">
+    <h2> Your bag is empty </h2>
+    <a routerLink="/decor"> browse items... </a>
+</div>
+}

@@ -7,11 +7,12 @@ import * as cartSelector from '../state/cart.selector';
 import * as cartActions from '../state/cart.actions';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [OrderSummaryComponent, AsyncPipe],
+  imports: [OrderSummaryComponent, AsyncPipe, RouterLink],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
