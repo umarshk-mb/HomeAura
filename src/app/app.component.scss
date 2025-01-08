@@ -1,0 +1,3 @@
+:has(:host(.popup-opened)) {
+    pointer-events: none;
+}

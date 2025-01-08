@@ -1,13 +1,13 @@
 @if (isVisible) {
-        <div class="quick-view-container">
-            <img src="../../../../assets/close.jpg" alt="close" class="close" (click)="close()" width="20px">
-            <img [src]="product.image" alt="no-product-image-found" class="product-image">
-            
-            <div class="product-details">
+<div class="quick-view-container">
+    <img src="../../../../assets/close.jpg" alt="close" class="close" (click)="close()" width="20px">
+    <img [src]="product.image" alt="no-product-image-found" class="product-image">
+
+    <div class="product-details">
         <h4 class="product-name">{{product.name}}</h4>
         <p class="product-price"><span>&#x20A8;</span>{{product.price}}</p>
         <p class="product-desc">{{product.description}}</p>
-        
+
         @if(isItemAdded) {
             <span class="item-added">
                 <img src="../../../../assets/checked.png" style="height: 35px;">
