@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OrderSummaryComponent } from './order-summary/order-summary.component';
 import { Store } from '@ngrx/store';
 import { IProductState } from '../state/cart.state';
-import { Products } from '../models/products.model';
+import { IProductData } from '../models/products.model';
 import * as cartSelector from '../state/cart.selector';
 import * as cartActions from '../state/cart.actions';
 import { Observable } from 'rxjs';
@@ -17,7 +17,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './cart.component.scss'
 })
 export class CartComponent implements OnInit {
-  items?: Observable<Products[]>;
+  items?: Observable<IProductData[]>;
   hasItems?: number;
 
   constructor(private store: Store<{ item: IProductState }>) { }
@@ -34,7 +34,7 @@ export class CartComponent implements OnInit {
     });
   }
 
-  removeItem(discardItem: Products): void {
+  removeItem(discardItem: IProductData): void {
     this.store.dispatch(cartActions.removeItem({
       item: discardItem
     }))

@@ -1,6 +1,6 @@
-import { Products } from "../models/products.model";
+import { IProductData } from "../models/products.model";
 
 export interface IProductState {
-    product: Products[];
+    product: IProductData[];
     isLoading: boolean;
 }

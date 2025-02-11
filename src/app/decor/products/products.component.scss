@@ -1,9 +1,41 @@
-.product-type{
+.product-view {
+    cursor: pointer;
+    position: relative;
+}
+
+.product-type {
     text-transform: uppercase;
     font-weight: 500;
     text-decoration: overline;
 }
 
-.product-desc {
-    text-transform: capitalize;
+.content {
+  display: none;
+}
+
+@media(min-width: 960px) {
+  
+  .product-view:hover .content {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    left: 25%;
+    gap: 5px;
+  }
+  
+  .product-view:hover img {
+    opacity: 0.6;
+  }
+  .product-view:hover span {
+    height: 20px;
+    width: 1px;
+    background-color: red;
+  }
+  .product-view:hover .content {
+    opacity: 1;
+  }
+  
+  p:hover{
+      color: #6f42c1;
+  }
 }

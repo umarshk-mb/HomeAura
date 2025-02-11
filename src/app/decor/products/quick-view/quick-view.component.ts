@@ -1,6 +1,6 @@
 import { HostBinding } from '@angular/core';
 import { Component } from '@angular/core';
-import { Products } from '../../../models/products.model';
+import { IProductData } from '../../../models/products.model';
 import { Store } from '@ngrx/store';
 import { IProductState } from '../../../state/cart.state';
 import * as CartActions from '../../../state/cart.actions';
@@ -12,7 +12,7 @@ import * as CartActions from '../../../state/cart.actions';
   styleUrl: './quick-view.component.scss',
 })
 export class QuickViewComponent {
-  product: Products = {} as Products;
+  product: IProductData = {} as IProductData;
   imgPath = 'assets/close.jpg';
 
   isItemAdded = false;
@@ -20,7 +20,7 @@ export class QuickViewComponent {
 
   constructor(private store: Store<{ item: IProductState }>) { }
 
-  open(product: Products) {
+  open(product: IProductData) {
     this.isVisible = true;
     this.product = product;
   }
@@ -30,9 +30,9 @@ export class QuickViewComponent {
     this.isItemAdded = this.isVisible;
   }
 
-  addItem(product: Products): void {
+  addItem(product: IProductData): void {
     this.store.dispatch(CartActions.addItem({
-      item: product
+      item: product,
     }));
 
     this.isItemAdded = !this.isItemAdded;

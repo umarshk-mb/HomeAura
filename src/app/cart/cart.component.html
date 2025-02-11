@@ -14,12 +14,13 @@
                         <h3>
                             <p>{{item.name}}</p>
                         </h3>
-                        <p class="ml-4"><span>&#x20B9;</span>{{item.price}}</p>
+                        <p class="ml-4">{{item.price}}</p>
                     </div>
+
                     <p class="mt-1 text-sm text-gray-500">{{item.type}}</p>
                 </div>
                 <div class="flex flex-1 items-end justify-between text-sm">
-                    <p class="text-gray-500">Qty 1</p> <!--Need to update-->
+                    <p class="text-gray-500">{{item.count}}</p>
                     <div class="flex">
                         <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500"
                             (click)="removeItem(item)">Remove</button>
