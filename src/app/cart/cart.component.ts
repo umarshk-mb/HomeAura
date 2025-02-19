@@ -8,11 +8,12 @@ import * as cartActions from '../state/cart.actions';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { QuantityComponent } from './quantity/quantity.component';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [OrderSummaryComponent, AsyncPipe, RouterLink],
+  imports: [OrderSummaryComponent, AsyncPipe, RouterLink, QuantityComponent],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })

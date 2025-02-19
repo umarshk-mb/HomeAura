@@ -5,6 +5,6 @@ export class DataFormat {
     constructor() { }
 
     priceFormat(value: number): string {
-        return "₹" + value.toLocaleString('en-IN')
+        return "₹ " + value.toLocaleString('en-IN')
     }
 }

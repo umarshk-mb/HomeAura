@@ -4,7 +4,7 @@
         <h2>Home Decor Picks</h2>
         @for(item of items | async; track item.name) {
         <li class="flex py-6 list-items">
-            <div class="size-24 shrink-0 overflow-hidden rounded-md border border-gray-200">
+            <div class="size-24 shrink-0 overflow-hidden rounded-md border border-gray-200 img-container">
                 <img [src]="item.image" alt="item image not found" class="size-full object-cover">
             </div>
 
@@ -20,7 +20,7 @@
                     <p class="mt-1 text-sm text-gray-500">{{item.type}}</p>
                 </div>
                 <div class="flex flex-1 items-end justify-between text-sm">
-                    <p class="text-gray-500">{{item.count}}</p>
+                    <ha-quantity [product]="item"></ha-quantity>
                     <div class="flex">
                         <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500"
                             (click)="removeItem(item)">Remove</button>
