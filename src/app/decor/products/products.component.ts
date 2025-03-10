@@ -1,7 +1,8 @@
-import { IProductData, Products } from '../../models/products.model';
+import { IProductData } from '../../models/products.model';
 import { ProductService } from './../../product-loader.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, signal, WritableSignal } from '@angular/core';
 import { QuickViewComponent } from './quick-view/quick-view.component';
+import { ProductCommon } from './product-common.service';
 
 @Component({
   selector: 'app-products',
@@ -12,23 +13,22 @@ import { QuickViewComponent } from './quick-view/quick-view.component';
 })
 export class ProductsComponent implements OnInit {
   decorProducts: IProductData[] = [];
-  productType: string = 'Lighting'; // has to be updates
-  enableQuickView = false;
+  productType: string = 'Lighting'; // has to be updated
+  quickViewProduct = {} as IProductData;
+  quickViewEnabled: WritableSignal<boolean> = signal(false);
 
-  @ViewChild('quickView') quickView!: QuickViewComponent;
-
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private productCommon: ProductCommon) { }
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe((products) => {
       this.decorProducts = products;
-      // this.productType = products[0].type;
     });
+    this.quickViewEnabled = this.productCommon.qucikViewEnable;
   }
 
   openQuickView(product: IProductData) {
-    this.enableQuickView = true
-    this.quickView.open(product)
+    this.productCommon.qucikViewEnable.update((toggle) => !toggle);
+    this.quickViewProduct = product;
   }
 
   addToFav(): void {

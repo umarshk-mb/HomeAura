@@ -22,6 +22,6 @@
   </div>
 </div>
 
-@if(enableQuickView) {
-  <app-quick-view #quickView></app-quick-view>
+@if (quickViewEnabled()) {
+  <app-quick-view [quickViewProduct]="quickViewProduct"></app-quick-view>
 }

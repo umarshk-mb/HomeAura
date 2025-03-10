@@ -1,7 +1,6 @@
 import { Action, createReducer, on } from "@ngrx/store";
 import { IProductState } from "./cart.state";
 import * as CartActions from '../state/cart.actions'
-import { count } from "node:console";
 
 export const initialState: IProductState = {
     product: [],
@@ -35,9 +34,19 @@ const _reducer = createReducer(
         }
     }),
 
-    on(CartActions.removeItem, (state, { item }) => ({
+    on(CartActions.removeItem, (state, { itemId }) => ({
         ...state,
-        product: state.product.filter((x) => x.id !== item.id),
+        product: state.product.filter((x) => x.id !== itemId),
+    })),
+
+    on(CartActions.increament, (state, { itemId }) => ({
+        ...state,
+        product: state.product.map((i) => i.id === itemId ? { ...i, count: i.count + 1 } : i)
+    })),
+
+    on(CartActions.decreament, (state, { itemId }) => ({
+        ...state,
+        product: state.product.map((i) => i.id === itemId ? { ...i, count: i.count - 1 } : i)
     }))
 )
 

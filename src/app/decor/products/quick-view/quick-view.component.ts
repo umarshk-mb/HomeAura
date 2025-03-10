@@ -1,9 +1,10 @@
-import { HostBinding } from '@angular/core';
+import { HostBinding, Input, signal, WritableSignal } from '@angular/core';
 import { Component } from '@angular/core';
 import { IProductData } from '../../../models/products.model';
 import { Store } from '@ngrx/store';
 import { IProductState } from '../../../state/cart.state';
 import * as CartActions from '../../../state/cart.actions';
+import { ProductCommon } from '../product-common.service';
 
 @Component({
   selector: 'app-quick-view',
@@ -12,22 +13,15 @@ import * as CartActions from '../../../state/cart.actions';
   styleUrl: './quick-view.component.scss',
 })
 export class QuickViewComponent {
-  product: IProductData = {} as IProductData;
+  @Input() quickViewProduct = {} as IProductData;
   imgPath = 'assets/close.jpg';
 
   isItemAdded = false;
-  @HostBinding('class.popup-opened') isVisible = false;
-
-  constructor(private store: Store<{ item: IProductState }>) { }
-
-  open(product: IProductData) {
-    this.isVisible = true;
-    this.product = product;
-  }
+  constructor(private store: Store<{ item: IProductState }>, private productCommon: ProductCommon) { }
 
   close() {
-    this.isVisible = !this.isVisible;
-    this.isItemAdded = this.isVisible;
+    this.isItemAdded = this.productCommon.qucikViewEnable();
+    this.productCommon.qucikViewEnable.update((toggle) => !toggle);
   }
 
   addItem(product: IProductData): void {

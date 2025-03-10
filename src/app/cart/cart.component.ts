@@ -35,9 +35,9 @@ export class CartComponent implements OnInit {
     });
   }
 
-  removeItem(discardItem: IProductData): void {
+  removeItem(id: string): void {
     this.store.dispatch(cartActions.removeItem({
-      item: discardItem
+      itemId: id
     }))
   }
 }

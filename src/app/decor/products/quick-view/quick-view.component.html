@@ -1,20 +1,18 @@
-@if (isVisible) {
 <div class="quick-view-container">
     <img src="../../../../assets/close.jpg" alt="close" class="close" (click)="close()" width="20px">
-    <img [src]="product.image" alt="no-product-image-found" class="product-image">
+    <img [src]="quickViewProduct.image" alt="no-product-image-found" class="product-image">
 
     <div class="product-details">
-        <h4 class="product-name">{{product.name}}</h4>
-        <p class="product-price">{{product.price}}</p>
-        <p class="product-desc">{{product.desc}}</p>
+        <h4 class="product-name">{{quickViewProduct.name}}</h4>
+        <p class="product-price">{{quickViewProduct.price}}</p>
+        <p class="product-desc">{{quickViewProduct.desc}}</p>
 
         @if(isItemAdded) {
             <span class="item-added">
                 <img src="../../../../assets/checked.png" style="height: 35px;">
             </span>
         } @else {
-            <button class="add-to-cart" (click)="addItem(product)">Add to bag</button>
+            <button class="add-to-cart" (click)="addItem(quickViewProduct)">Add to bag</button>
         }
     </div>
 </div>
-}
