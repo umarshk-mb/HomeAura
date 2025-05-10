@@ -16,7 +16,7 @@ export interface IProductData {
     name: string;
     type: string;
     image: string;
-    price: string;
+    price: number;
     ratings: number;
     availableItems: number;
     count: number;

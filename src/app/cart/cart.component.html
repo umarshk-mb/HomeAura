@@ -2,7 +2,7 @@
 <div class="cart-container">
     <div class="cart-items">
         <h2>Home Decor Picks</h2>
-        @for(item of items | async; track item.name) {
+        @for(item of items; track item.name) {
         <li class="flex py-6 list-items">
             <div class="size-24 shrink-0 overflow-hidden rounded-md border border-gray-200 img-container">
                 <img [src]="item.image" alt="item image not found" class="size-full object-cover">
@@ -14,7 +14,7 @@
                         <h3>
                             <p>{{item.name}}</p>
                         </h3>
-                        <p class="ml-4">{{item.price}}</p>
+                        <p class="ml-4">{{item.price | priceFormat }}</p>
                     </div>
 
                     <p class="mt-1 text-sm text-gray-500">{{item.type}}</p>

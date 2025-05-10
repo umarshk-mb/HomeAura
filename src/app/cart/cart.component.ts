@@ -5,20 +5,19 @@ import { IProductState } from '../state/cart.state';
 import { IProductData } from '../models/products.model';
 import * as cartSelector from '../state/cart.selector';
 import * as cartActions from '../state/cart.actions';
-import { Observable } from 'rxjs';
-import { AsyncPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { QuantityComponent } from './quantity/quantity.component';
+import { PriceFormatPipe } from '../currency-formatter.pipe';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [OrderSummaryComponent, AsyncPipe, RouterLink, QuantityComponent],
+  imports: [OrderSummaryComponent, RouterLink, QuantityComponent, PriceFormatPipe],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
 export class CartComponent implements OnInit {
-  items?: Observable<IProductData[]>;
+  items: IProductData[] = [];
   hasItems?: number;
 
   constructor(private store: Store<{ item: IProductState }>) { }
@@ -28,10 +27,9 @@ export class CartComponent implements OnInit {
   }
 
   private loadProducts(): void {
-    this.items = this.store.select(cartSelector.cartItems);
-
-    this.items.subscribe((res) => {
-      this.hasItems = res.length
+    this.store.select(cartSelector.cartItems).subscribe((item) => {
+      this.items = item
+      this.hasItems = this.items.length
     });
   }
 
