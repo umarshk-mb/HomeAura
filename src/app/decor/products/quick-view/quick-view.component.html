@@ -4,8 +4,8 @@
 
     <div class="product-details">
         <h4 class="product-name">{{quickViewProduct.name}}</h4>
-        <p class="product-price">{{quickViewProduct.price}}</p>
-        <p class="product-desc">{{quickViewProduct.desc}}</p>
+        <p class="product-price">{{quickViewProduct.price | priceFormat}} </p>
+        <p class="product-desc">{{quickViewProduct.desc }}</p>
 
         @if(isItemAdded) {
             <span class="item-added">

@@ -3,18 +3,20 @@ import { RouterLink } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { IProductState } from '../../state/cart.state';
 import * as cartSelector from '../../state/cart.selector';
-import { IProductData } from '../../models/products.model';
-import { Observable } from 'rxjs';
+import { PriceFormatPipe } from '../../currency-formatter.pipe';
 
 @Component({
   selector: 'ha-order-summary',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, PriceFormatPipe],
   templateUrl: './order-summary.component.html',
   styleUrl: './order-summary.component.scss'
 })
-export class OrderSummaryComponent implements OnInit {
-  subTotal: number = 0; total: number = 0;
+export class OrderSummaryComponent implements OnInit{
+  subTotal = 0 
+  estimates = 5
+  totalAmount = 0
+  
 
   constructor(private store: Store<{ product: IProductState }>) { }
 
@@ -23,12 +25,9 @@ export class OrderSummaryComponent implements OnInit {
   }
 
   calculatePrice(): void {
-    this.store.select(cartSelector.cartItems).subscribe((products) => {
-      products.forEach((product) => {
-        this.subTotal += product.price;
-        console.log(product.price);
-
-      })
-    })
+    this.store.select(cartSelector.subTotal).subscribe((subTotal) => {
+      this.subTotal = subTotal
+      this.totalAmount = this.estimates + this.subTotal
+    });
   }
 }

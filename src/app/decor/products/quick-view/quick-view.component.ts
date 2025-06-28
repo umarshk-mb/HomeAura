@@ -5,12 +5,14 @@ import { Store } from '@ngrx/store';
 import { IProductState } from '../../../state/cart.state';
 import * as CartActions from '../../../state/cart.actions';
 import { ProductCommon } from '../product-common.service';
+import { PriceFormatPipe } from '../../../currency-formatter.pipe';
 
 @Component({
   selector: 'app-quick-view',
   standalone: true,
   templateUrl: './quick-view.component.html',
   styleUrl: './quick-view.component.scss',
+  imports: [PriceFormatPipe]
 })
 export class QuickViewComponent {
   @Input() quickViewProduct = {} as IProductData;
