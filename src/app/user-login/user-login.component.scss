@@ -1,0 +1,70 @@
+.login-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    
+}
+
+form {
+    font-family: monospace;
+    div {
+        display: flex;
+        flex-direction: column;
+
+    }
+}
+
+@media screen and (max-width: 1020px) {
+    .login-page{
+        font-family: monospace;
+    }
+    div {
+        margin: 5px 15px;
+        border: 1px solid gray;
+        padding: 5px;
+        border-radius: 5px;
+        color: gray;
+    }
+
+    .sumbit-btn {
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 18px;
+        color: #000;
+    }
+    
+    .sign-in, .submit {
+        border: none;
+        padding: 0;
+    }
+
+    input {
+        font-size: 18px;
+
+    }
+
+    .create-acc {
+    color: blueviolet;
+    margin-left: 5px;
+}
+
+}
+
+input:focus {
+    outline: none;
+    border-color: transparent;
+    box-shadow: none;
+    background-color: none;
+    color: #000;
+}
+
+span {
+    color: #000;
+}
+
+input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px white inset !important;
+  -webkit-text-fill-color: black !important;
+  transition: background-color 9999s ease-in-out 0s;
+}

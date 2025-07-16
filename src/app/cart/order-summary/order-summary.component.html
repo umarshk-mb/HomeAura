@@ -3,19 +3,19 @@
 
     <div class="sub-total">
         <h4>Subtotal</h4>
-        <strong><span>&#x20B9;</span>{{subTotal | priceFormat }}</strong>
+        <strong>{{subTotal | priceFormat }}</strong>
     </div>
     <span class="separator"></span>
 
     <div class="shipping-cost">
         <h4>Shipping estimates</h4>
-        <strong><span>&#x20B9;</span>{{estimates | priceFormat}}</strong>
+        <strong>{{estimates | priceFormat}}</strong>
     </div>
     <span class="separator"></span>
 
     <div class="total-cost">
         <strong>Order total</strong>
-        <strong><span>&#x20B9;</span>{{totalAmount | priceFormat}}</strong>
+        <strong>{{totalAmount | priceFormat}}</strong>
     </div>
 
     <button class="checkout" [disabled]="true"> Checkout </button>
