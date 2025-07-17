@@ -1,37 +1,27 @@
-.login-page {
+:host(.login-page) {
     display: flex;
+    flex-direction: column;
+    height: 80vh;
     align-items: center;
     justify-content: center;
-    padding: 20px;
-    
+    font-family: monospace;    
 }
 
-form {
-    font-family: monospace;
-    div {
-        display: flex;
-        flex-direction: column;
-
-    }
-}
-
-@media screen and (max-width: 1020px) {
-    .login-page{
-        font-family: monospace;
-    }
     div {
         margin: 5px 15px;
         border: 1px solid gray;
         padding: 5px;
         border-radius: 5px;
         color: gray;
+        height: 40px;
     }
 
     .sumbit-btn {
         padding: 10px;
         border-radius: 5px;
-        font-size: 18px;
+        font-size: 15px;
         color: #000;
+        width: 100%;
     }
     
     .sign-in, .submit {
@@ -40,16 +30,14 @@ form {
     }
 
     input {
-        font-size: 18px;
-
+        font-size: 13px;
+        margin-left: 5px;
     }
 
     .create-acc {
     color: blueviolet;
     margin-left: 5px;
-}
-
-}
+    }
 
 input:focus {
     outline: none;
