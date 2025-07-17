@@ -1,7 +1,8 @@
+@if(userLogin()){
 <div class="sign-in">
     Sign in to your account 
     <span>or</span>
-    <button class="create-acc">
+    <button class="create-acc" (click)="userRegistraion()">
         create an account
     </button>
 </div>
@@ -22,3 +23,7 @@
         <button class="sumbit-btn bg-blue-200" type="submit">Login</button>
     </div>
 </form>
+} @else {
+
+    <ha-user-register></ha-user-register>
+}
