@@ -1,4 +1,8 @@
-@if(register()) {
+
+<div class="register">
+    Create an account
+</div>
+
 <form [formGroup]="registerForm">
 
     <div>
@@ -42,12 +46,22 @@
         </label>
         <input type="password" required>
     </div>
+
+    <div>
+        <label>
+            Confirm Password: 
+        </label>
+        <input type="password" required>
+    </div>
 </form>
 
-<div>
-    <button (click)="userRegister()">Login</button>
+<div class="submit">
+    <button class="sumbit-btn bg-blue-200" (click)="userRegister()">Register</button>
 </div>
-}
-<!-- } @else {
-    <ha-user-login></ha-user-login>
-} -->
+
+<div class="login">
+    Already have an account ?
+    <button class="create-acc" (click)="userRegister()">
+        Login
+    </button>
+</div>

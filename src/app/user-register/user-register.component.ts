@@ -1,22 +1,21 @@
-import { Component, signal } from '@angular/core';
+import { Component, HostBinding, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { UserLoginComponent } from '../user-login/user-login.component';
+import { UserLoginService } from '../user-login.service';
 
 @Component({
   selector: 'ha-user-register',
   standalone: true,
-  imports: [ReactiveFormsModule, UserLoginComponent],
+  imports: [ReactiveFormsModule],
   templateUrl: './user-register.component.html',
   styleUrl: './user-register.component.scss'
 })
 export class UserRegisterComponent {
-
-  register = signal(true);
-
-  constructor(private fb: FormBuilder) {}
+  
+  constructor(private fb: FormBuilder, private userLogin: UserLoginService) {}
+  @HostBinding('class.registration-page')
 
   userRegister() {
-    this.register.update((reg) => !reg)
+    this.userLogin.userRegiestered.update((reg) => !reg);
   }
 
   registerForm = this.fb.group({
@@ -25,6 +24,7 @@ export class UserRegisterComponent {
     phone: [''],
     city: [''],
     email: [''],
-    password: ['']
+    password: [''],
+    confirmPassword: ['']
   })
 }

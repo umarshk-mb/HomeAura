@@ -1,29 +1,30 @@
-@if(userLogin()){
-<div class="sign-in">
-    Sign in to your account 
-    <span>or</span>
-    <button class="create-acc" (click)="userRegistraion()">
-        create an account
-    </button>
+@if(registeredUser()){
+<div class="user-login-container">
+    <div class="sign-in">
+        Sign in to your account 
+        <span>or</span>
+        <button class="create-acc" (click)="userRegistraion()">
+            create an account
+        </button>
+    </div>
+
+    <form #loginForm="ngForm" (ngSubmit)="login()" novalidate>
+        <div class="form-field">
+            <label for="email">E-Mail: </label>
+            <input id="email" name="email" type="email" required [(ngModel)]="formData.userName" #checkEmail="ngModel">
+        </div>
+
+
+        <div class="form-field">
+            <label for="password">Password: </label>
+            <input id="password" name="password" type="text" required [(ngModel)]="formData.password" #checkPass="ngModel" pattern="/[a-zA-Z0-9]/gi" minlength="8">
+        </div>
+
+        <div class="submit">
+            <button class="sumbit-btn bg-blue-200" type="submit">Login</button>
+        </div>
+    </form>
 </div>
-
-<form #loginForm="ngForm" (ngSubmit)="login()" novalidate>
-    <div class="form-field">
-        <label for="email">E-Mail: </label>
-        <input id="email" name="email" type="email" required [(ngModel)]="formData.userName" #checkEmail="ngModel">
-    </div>
-
-
-    <div class="form-field">
-        <label for="password">Password: </label>
-        <input id="password" name="password" type="text" required [(ngModel)]="formData.password" #checkPass="ngModel" pattern="/[a-zA-Z0-9]/gi" minlength="8">
-    </div>
-
-    <div class="submit">
-        <button class="sumbit-btn bg-blue-200" type="submit">Login</button>
-    </div>
-</form>
 } @else {
-
     <ha-user-register></ha-user-register>
 }
