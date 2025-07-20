@@ -1,9 +1,15 @@
 import { Injectable, signal } from '@angular/core';
 
+export interface UserInterface {
+  email: string,
+  userName: string,
+  token: string
+}
+
 @Injectable({
   providedIn: 'root',
 })
-export class UserLoginService {
+export class UserAuthService {
 
   constructor() { }
 

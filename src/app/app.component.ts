@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { UserLoginService } from './user-login.service';
+import { UserAuthService } from './user-auth.service';
+import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent {
   title: string;
   isSideNavOpen = false;
 
-  constructor(private userLoginService: UserLoginService) {
+  constructor(private UserAuthService: UserAuthService) {
     this.title = 'HomeAura';
   }
 
@@ -22,6 +23,6 @@ export class AppComponent {
   }
 
   userLogin() {
-    this.userLoginService.userRegiestered.set(true)
+    this.UserAuthService.userRegiestered.set(true)
   }
 }

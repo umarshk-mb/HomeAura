@@ -1,6 +1,7 @@
 import { Component, HostBinding, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { UserLoginService } from '../user-login.service';
+import { UserAuthService, UserInterface } from '../user-auth.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'ha-user-register',
@@ -11,13 +12,10 @@ import { UserLoginService } from '../user-login.service';
 })
 export class UserRegisterComponent {
   
-  constructor(private fb: FormBuilder, private userLogin: UserLoginService) {}
+  constructor(private fb: FormBuilder, private userLogin: UserAuthService, private http: HttpClient) {}
   @HostBinding('class.registration-page')
 
-  userRegister() {
-    this.userLogin.userRegiestered.update((reg) => !reg);
-  }
-
+  
   registerForm = this.fb.group({
     name: [''],
     dob: [''],
@@ -26,5 +24,18 @@ export class UserRegisterComponent {
     email: [''],
     password: [''],
     confirmPassword: ['']
-  })
+  });
+  
+  submit() {
+    this.http.post<{user: UserInterface}>('https://api.realworld.io/api/users', 
+    {
+      user: this.registerForm.getRawValue(),
+    })
+    .subscribe((userReg) => console.log(userReg))
+  }
+
+  userRegister() {
+    this.userLogin.userRegiestered.update((reg) => !reg);
+  }
+
 }

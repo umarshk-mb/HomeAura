@@ -1,7 +1,7 @@
 import { Component, HostBinding, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { UserRegisterComponent } from '../user-register/user-register.component';
-import { UserLoginService } from '../user-login.service';
+import { UserAuthService } from '../user-auth.service';
 
 @Component({
   selector: 'ha-user-login',
@@ -13,7 +13,7 @@ import { UserLoginService } from '../user-login.service';
 export class UserLoginComponent {
 
   registeredUser = signal(true);
-  constructor(private userLogin: UserLoginService) {
+  constructor(private userLogin: UserAuthService) {
     this.registeredUser = this.userLogin.userRegiestered;
   }
   
