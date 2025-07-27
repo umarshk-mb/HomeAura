@@ -9,6 +9,13 @@
     text-decoration: overline;
 }
 
+.product-desc {
+  font-family: monospace;
+  text-align: center;
+}::first-letter {
+  text-transform: uppercase;
+}
+
 .content {
   display: none;
 }
